@@ -11,7 +11,6 @@ This example app will run on top of AWS serverless services such as:
 The IaS (Infrastructure as Code) `.yml` file has been provided to help you deploying any necessary resources to run the application.
 
 ## What you can do with this app
-![](/gif/chat-bot.gif) ![](/gif/rest-api.gif)
 
 - Say hi to initiate the chat bot app
 - Get any messages on REST API
@@ -19,6 +18,14 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
   - /messages/:msg_id
   - /summary
 - Deploying serverless based app
+
+### Chat bot example
+
+![](/gif/chat-bot.gif)
+
+### rest api example
+
+![](/gif/rest-api.gif)
 
 ## How to deploy
 
@@ -29,16 +36,16 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
 - You must subscribe to `messages` & `messaging_postbacks` webhook events on FB-messenger setup page
 - Also read this external resources for preparing your own integration and deployment :
 
-   - [FB-Messenger for developer](https://developers.facebook.com/docs/messenger-platform/getting-started)
-   - [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html)
-   - [AWS Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+  - [FB-Messenger for developer](https://developers.facebook.com/docs/messenger-platform/getting-started)
+  - [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html)
+  - [AWS Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 
 - Make sure your choice of AWS Regions support any of this services:
 
-   - AWS DynamoDb
-   - AWS Lambda
-   - AWS REST API Gateway
-   - AWS Elastic IP
+  - AWS DynamoDb
+  - AWS Lambda
+  - AWS REST API Gateway
+  - AWS Elastic IP
 
 ### Requirement
 
