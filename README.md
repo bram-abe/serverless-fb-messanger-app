@@ -23,19 +23,21 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
 
 ### Prerequisite
 
-You need to create Business Page on Facebook to be integrate with messenger.
-Also read this external resources for preparing your own integration and deployment :
+- AWS Cloudwatch only showing the AWS lambda logs when you intentionally write logs to console
+- You need to create Business Page on Facebook to be integrate with messenger
+- You must subscribe to `messages` & `messaging_postbacks` webhook events on FB-messenger setup page
+- Also read this external resources for preparing your own integration and deployment :
 
-- [FB-Messenger for developer](https://developers.facebook.com/docs/messenger-platform/getting-started)
-- [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html)
-- [AWS Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+   - [FB-Messenger for developer](https://developers.facebook.com/docs/messenger-platform/getting-started)
+   - [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html)
+   - [AWS Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 
-Make sure your choice of AWS Regions support any of this services:
+- Make sure your choice of AWS Regions support any of this services:
 
-- AWS DynamoDb
-- AWS Lambda
-- AWS REST API Gateway
-- AWS Elastic IP
+   - AWS DynamoDb
+   - AWS Lambda
+   - AWS REST API Gateway
+   - AWS Elastic IP
 
 ### Requirement
 
