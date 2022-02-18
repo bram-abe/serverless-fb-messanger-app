@@ -12,7 +12,7 @@ Globals:
       {
         "environment": development,
         "regions": "ap-southeast-1",
-        "app-name": "adakerja-test-app",
+        "app-name": "fb-messenger-app",
       }
 
 Resources:
@@ -30,7 +30,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   internetGateway:
     Type: AWS::EC2::InternetGateway
@@ -41,7 +41,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   VPCGatewayAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
@@ -62,7 +62,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   privateSubnet1:
     Type: AWS::EC2::Subnet
@@ -77,7 +77,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   publicRouteTable:
     Type: AWS::EC2::RouteTable
@@ -89,7 +89,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   privateRouteTable:
     Type: AWS::EC2::RouteTable
@@ -101,7 +101,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   publicRouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
@@ -125,7 +125,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   NATGateway:
     Type: AWS::EC2::NatGateway
@@ -139,7 +139,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
   addRouteForPrivateRouteTable:
     Type: AWS::EC2::Route
@@ -162,7 +162,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties: 
       GroupDescription: Lambda security Group
-      GroupName: Lambda security Group 1
+      GroupName: Lambda security Group
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 443
@@ -174,7 +174,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
       VpcId: !Ref defaultVPC
 
 ###########################################################################
@@ -203,7 +203,7 @@ Resources:
   webhookServer:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: webhook-handler-1
+      FunctionName: webhook-handler
       CodeUri: webhook-handler
       Events:
         ApiEvent:
@@ -228,9 +228,9 @@ Resources:
       Environment:
         Variables:
           AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1 #Reusing Connections with Keep-Alive in Node.js
-          WEBHOOK_VERIFY_TOKEN: adakerja-test-app-webhook-secret
+          WEBHOOK_VERIFY_TOKEN: #<REPLACE_WITH_YOUR_TOKEN>
+          PAGE_ACCESS_TOKEN: #<REPLACE_WITH_YOUR_TOKEN>
           API_BASE_URL: https://graph.facebook.com/v13.0/me/messages
-          PAGE_ACCESS_TOKEN: EAAEK7NQLIZAcBAF2xUYadbheZABNv21YDotIkdUvraWx4dd2PppFBbkea8G6nZCEdIsMbR9Gk0ZCC83CfHxJZCWiO6cPqMHTd4Tx4m3ZB7mH4Y7rVBoinR3tKLMekTKffwqxUt4zNREOxTCCztkTGcuii1cYxaxBiAZA2OjmcLbRrhHaOYddnXE
           USERS_MASTER_TABLE: !Ref userDatabase
           CHAT_HISTORY_TABLE: !Ref chatHistoryDatabase
 
@@ -300,7 +300,7 @@ Resources:
         - Key: regions
           Value: ap-southeast-1
         - Key: app-name
-          Value: adakerja-test-app
+          Value: fb-messenger-app
 
 Outputs:
   endpointApi:

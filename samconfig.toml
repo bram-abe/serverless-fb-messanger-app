@@ -2,9 +2,9 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "adakerja-test-app-2"
+stack_name = "fb-messenger-app"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-17sra4sj24o1d"
-s3_prefix = "adakerja-test-app-2"
+s3_prefix = "fb-messenger-app"
 region = "ap-southeast-1"
 capabilities = "CAPABILITY_IAM"
 parameter_overrides = "Environment=\"development\""

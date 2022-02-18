@@ -30,19 +30,20 @@ async function handlePostback(senderId, received_postback) {
     const storeMsgResp = await db.storeMessage(messageId, payload, senderId, userName);
     console.log("Store user message status: ", storeMsgResp);
 
-    let dobTemp = dob.split("-");
+    let dobParsed = dob.split("-");
     const date = new Date();
+    const yearsModifier = date.getMonth() < dobParsed[1] ? 0 : 1;
     const currentDate = new Date(date.toUTCString()).toDateString();
-    const nextBirtday = new Date(Date.UTC(date.getFullYear() + 1, dobTemp[1] - 1, dobTemp[2])).toDateString();
+    const nextBirtday = new Date(Date.UTC(date.getFullYear() + yearsModifier, dobParsed[1] - 1, dobParsed[2])).toDateString();
     const remainingDay = Math.floor((Date.parse(nextBirtday) - Date.parse(currentDate)) / 86400000);
 
     if (postback.payload === "yes") {
-      response.text = `There are ${remainingDay} days left until your next birthday, Can't wait !! \:D/`;
+      response.text = `There are ${remainingDay} days left until your next birthday, Can't wait !!`;
     } else {
-      response.text = "Goodbye fellas, see you soon";
+      response.text = "Goodbye, see you soon";
     }
   } else {
-    response.text = "Hmmm...we can't find anything about you. Are you ghost ? X-p";
+    response.text = "Hmmm...we can't find anything about you. Are you ghost ?";
   }
 
   //Send response

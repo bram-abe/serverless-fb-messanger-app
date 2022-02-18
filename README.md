@@ -50,8 +50,8 @@ Make sure your choice of AWS Regions support any of this services:
 
 1. Put `WEBHOOK_VERIFY_TOKEN` env of your choice on serverless.yml
 2. Put FB-Messenger `PAGE_ACCESS_TOKEN` env on serverless.yml
-3. RUN `SAM build -t serverless.yml` on projects root folder
-4. RUN `SAM deploy -t serverless.yml --guided` on projects root folder
+3. RUN `sam build -t serverless.yml` on projects root folder
+4. RUN `sam deploy -t serverless.yml --guided` on projects root folder
    - enter stack name of your choice (ex: bot-test-app)
    - enter `ap-southeast-1` for AWS regions
    - choose `N` for Confirm changes before deploy ?
@@ -60,7 +60,17 @@ Make sure your choice of AWS Regions support any of this services:
    - choose `Y` for Save arguments to configuration file
    - choose default name for SAM configuration file [samconfig.toml]
    - choose default name enter for SAM configuration environment [default]
-5. Notes the output result of `endpointApi` from SAM deployment as your REST API base URL
+5. Notes the Cloudformation output value of `endpointApi` when successfully finished SAM deployment as your REST API base URL
 6. Add the URL from point 5 as callback URL on FB-Messenger for developer setup page
    - Add `/webhook` path to base URL (ex: https://BASE_URL/webhook)
 7. Go to the FB-Page you created before and say hi on chat
+
+### How to clean-up
+
+1. RUN `sam delete -t serverless.yml` on projects root folder
+2. Choose `Y` for the remaining options
+3. Go to AWS console to manually release elastic IP on VPC menu --> Elastic IP submenu
+
+Notes: AWS Cloudformation will not automatically release unused Elastic IP so you have to do it manually to avoid any unnecessary billing.
+
+### Cheers!
