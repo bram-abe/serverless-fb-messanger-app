@@ -11,6 +11,7 @@ This example app will run on top of AWS serverless services such as:
 The IaS (Infrastructure as Code) `.yml` file has been provided to help you deploying any necessary resources to run the application.
 
 ## What you can do with this app
+![](/gif/chat-bot.gif) ![](/gif/rest-api.gif)
 
 - Say hi to initiate the chat bot app
 - Get any messages on REST API
