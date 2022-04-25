@@ -12,7 +12,7 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
 
 ## What you can do with this app
 
-- Say hi to initiate the chat bot app
+- Say hi to initiate the chat bot app and talk to Bot
 - Get any messages on REST API
   - /messages
   - /messages/:msg_id
@@ -32,7 +32,7 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
 ### Prerequisite
 
 - AWS Cloudwatch only showing the AWS lambda logs when you intentionally write logs to console
-- You need to create Business Page on Facebook to be integrate with messenger
+- You need to create Business Page on Facebook to do integration with fb-messenger
 - You must subscribe to `messages` & `messaging_postbacks` webhook events on FB-messenger setup page
 - Also read this external resources for preparing your own integration and deployment :
 
@@ -58,8 +58,8 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
 
 ### Apps and serverless resources deployment
 
-1. Put `WEBHOOK_VERIFY_TOKEN` env of your choice on serverless.yml
-2. Put FB-Messenger `PAGE_ACCESS_TOKEN` env on serverless.yml
+1. Change `WEBHOOK_VERIFY_TOKEN` env placeholder of your choice on serverless.yml
+2. Change `PAGE_ACCESS_TOKEN` env placeholder on serverless.yml. Get generated access tokens from FB for Developer App Page on messenger settings 
 3. RUN `sam build -t serverless.yml` on projects root folder
 4. RUN `sam deploy -t serverless.yml --guided` on projects root folder
    - enter stack name of your choice (ex: bot-test-app)
@@ -69,10 +69,11 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
    - choose `N` for Disable rollback
    - choose `Y` for Save arguments to configuration file
    - choose default name for SAM configuration file [samconfig.toml]
-   - choose default name enter for SAM configuration environment [default]
+   - choose default name for SAM configuration environment [default]
 5. Notes the Cloudformation output value of `endpointApi` when successfully finished SAM deployment as your REST API base URL
-6. Add the URL from point 5 as callback URL on FB-Messenger for developer setup page
+6. Add URL from point 5 as callback URL on FB-Messenger for developer setup page
    - Add `/webhook` path to base URL (ex: https://BASE_URL/webhook)
+   - Add `Verify token` with the same token of your choice as point no.1 
 7. Go to the FB-Page you created before and say hi on chat
 
 ### How to clean-up
