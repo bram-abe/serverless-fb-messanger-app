@@ -20,7 +20,8 @@ exports.handler = async (event, context) => {
         getAllRecord({
           TableName: process.env.CHAT_HISTORY_TABLE,
           ConsistentRead: true,
-          ProjectionExpression: "message",
+          ExpressionAttributeNames: {"#ts": "timestamp"} ,
+          ProjectionExpression: "#ts, user_id, msg_id, message",
         })
       );
       console.log("DB response: ", dbRespond);
