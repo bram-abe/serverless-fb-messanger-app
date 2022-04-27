@@ -39,8 +39,13 @@ exports.handler = async (event, context) => {
         })
       );
       console.log("DB response: ", dbRespond);
-      response.statusCode = 200;
-      response.body = JSON.stringify(dbRespond?.Items[0]);
+      if(dbRespond?.Items.length < 1) {
+        response.statusCode = 404;
+        response.body = JSON.stringify("ID_NOT_FOUND");
+      } else {
+        response.statusCode = 200;
+        response.body = JSON.stringify(dbRespond?.Items[0]);
+      }
     } else if (basePath === "summary") {
       //Prepare statement and call DB request
       const dbRespond = await dbClient.send(
