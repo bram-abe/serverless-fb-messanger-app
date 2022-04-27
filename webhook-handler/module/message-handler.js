@@ -62,7 +62,10 @@ async function handleMessage(senderId, received_message) {
         break;
       //Already have a name
       case 2:
-        if (!greetingKeywords.includes(userInput) && userInput.length === 10) {
+        const rgx = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/;
+        let isValidDOB = rgx.test(userInput);
+
+        if (!greetingKeywords.includes(userInput) && isValidDOB) {
           const dbResp = await db.update(senderId, userName, userInput, 3);
           dbResp === "SUCCESS" ? (response.attachment = { ...template }) : (response.text = "Sorry, please try again later :)");
         } else {
