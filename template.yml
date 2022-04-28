@@ -260,8 +260,8 @@ Resources:
   getMessagesFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: get-message-handler
-      CodeUri: get-message-handler-prod
+      FunctionName: get-message-handler-prod
+      CodeUri: get-message-handler
       Events:
         ApiEvent:
           Type: Api
