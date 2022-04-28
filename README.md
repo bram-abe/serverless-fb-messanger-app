@@ -61,7 +61,7 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
 1. Change `WEBHOOK_VERIFY_TOKEN` env placeholder of your choice on serverless.yml
 2. Change `PAGE_ACCESS_TOKEN` env placeholder on serverless.yml. Get generated access tokens from FB for Developer App Page on messenger settings 
 3. RUN `sam build -t serverless.yml` on projects root folder
-4. RUN `sam deploy -t serverless.yml --guided` on projects root folder
+4. RUN `sam deploy --guided` on projects root folder
    - enter stack name of your choice (ex: bot-test-app)
    - enter `ap-southeast-1` for AWS regions
    - choose `N` for Confirm changes before deploy ?
