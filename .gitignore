@@ -3,5 +3,5 @@
 package-lock.json
 /test
 /.aws-sam
-serverless-dev.yml
+template-dev.yml
 debug.js
