@@ -180,8 +180,30 @@ Resources:
 ###########################################################################
 # API Gateway
 ###########################################################################
+  endpointApiRole:
+    Type: AWS::IAM::Role
+    Properties: 
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - apigateway.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: API Gateway to Cloudwatch Logs
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs
+        
+  endpointApiAccount:
+    Type: AWS::ApiGateway::Account
+    Properties: 
+      CloudWatchRoleArn: !GetAtt endpointApiRole.Arn
+
   endpointApi:
     Type: AWS::Serverless::Api
+    DependsOn: endpointApiAccount
     Properties:
       Auth:
         DefaultAuthorizer: AWS_IAM
@@ -192,6 +214,7 @@ Resources:
         - HttpMethod: "*" 
           ResourcePath: /*
           MetricsEnabled: true
+          LoggingLevel: ERROR
           ThrottlingBurstLimit: 10
           ThrottlingRateLimit: 100
       Name: adakerja-test-API-endpoint-1
@@ -228,8 +251,8 @@ Resources:
       Environment:
         Variables:
           AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1 #Reusing Connections with Keep-Alive in Node.js
-          WEBHOOK_VERIFY_TOKEN: #<REPLACE_WITH_YOUR_TOKEN>
-          PAGE_ACCESS_TOKEN: #<REPLACE_WITH_YOUR_TOKEN>
+          WEBHOOK_VERIFY_TOKEN: wvt #<REPLACE_WITH_YOUR_TOKEN>
+          PAGE_ACCESS_TOKEN: pat #<REPLACE_WITH_YOUR_TOKEN>
           API_BASE_URL: https://graph.facebook.com/v13.0/me/messages
           USERS_MASTER_TABLE: !Ref userDatabase
           CHAT_HISTORY_TABLE: !Ref chatHistoryDatabase
