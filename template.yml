@@ -226,7 +226,7 @@ Resources:
   webhookServer:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: webhook-handler-prod
+      FunctionName: fb-bot-webhook-handler
       CodeUri: webhook-handler
       Events:
         ApiEvent:
@@ -251,8 +251,8 @@ Resources:
       Environment:
         Variables:
           AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1 #Reusing Connections with Keep-Alive in Node.js
-          WEBHOOK_VERIFY_TOKEN: wvt #<REPLACE_WITH_YOUR_TOKEN>
-          PAGE_ACCESS_TOKEN: pat #<REPLACE_WITH_YOUR_TOKEN>
+          WEBHOOK_VERIFY_TOKEN: <REPLACE_WITH_YOUR_TOKEN>
+          PAGE_ACCESS_TOKEN: <REPLACE_WITH_YOUR_TOKEN>
           API_BASE_URL: https://graph.facebook.com/v13.0/me/messages
           USERS_MASTER_TABLE: !Ref userDatabase
           CHAT_HISTORY_TABLE: !Ref chatHistoryDatabase
@@ -260,7 +260,7 @@ Resources:
   getMessagesFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: get-message-handler-prod
+      FunctionName: fb-bot-get-message-handler
       CodeUri: get-message-handler
       Events:
         ApiEvent:
@@ -290,7 +290,7 @@ Resources:
         Type: String
       SSESpecification: 
         SSEEnabled: false
-      TableName: users-master-prod
+      TableName: fb-bot-users-master
 
   chatHistoryDatabase:
     Type: AWS::DynamoDB::Table
@@ -316,7 +316,7 @@ Resources:
       SSESpecification: 
         SSEEnabled: false
       TableClass: STANDARD 
-      TableName: chat-history-prod
+      TableName: fb-bot-chat-history
       Tags: 
         - Key: environment
           Value: development
