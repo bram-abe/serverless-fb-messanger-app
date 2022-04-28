@@ -1,3 +1,4 @@
 module.exports = {
-  testEnvironment: "node"
+  testEnvironment: "node",
+  testMatch: ["<rootDir>/test-module/test-case.js"]
 };
