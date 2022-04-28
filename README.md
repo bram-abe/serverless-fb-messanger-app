@@ -61,7 +61,7 @@ Choose one from the two options below.
 
 #### CI/CD deployment with AWS Code pipeline and automated testing
 1. RUN `sam pipeline bootstrap` will bootstraping all the required AWS resources to connecting CI/CD system
-2. RUN `sam deploy -t codepipeline.yaml --capabilities=CAPABILITY_IAM --stack-name <STACK-NAME>  --region <AWS-REGIONS> --parameter-overrides ProdStackName=<STACK-NAME>`
+2. RUN `sam deploy -t codepipeline.yaml --capabilities=CAPABILITY_IAM --stack-name <STACK-NAME> --region <AWS-REGIONS> --parameter-overrides ProdStackName=<STACK-NAME>`
 3. After creating the stack, the CodeStar Connection is in PENDING status by default. You must complete the OAuth handshake with the third-party provider using the installation associated with your connection via AWS console
 4. RUN `aws cloudformation describe-stacks --stack-name <STACK-NAME> --region <AWS-REGIONS>` to get endpoint URL on stack `Outputs`
 
