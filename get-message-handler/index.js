@@ -18,9 +18,9 @@ exports.handler = async (event, context) => {
       //Prepare statement and call DB request
       const dbRespond = await dbClient.send(
         getAllRecord({
-          TableName: process.env.CHAT_HISTORY_TABLE,
+          TableName: process.env.CHAT_HISTORY_TABLE || "mock-table",
           ConsistentRead: true,
-          ExpressionAttributeNames: {"#ts": "timestamp"} ,
+          ExpressionAttributeNames: { "#ts": "timestamp" },
           ProjectionExpression: "#ts, user_id, msg_id, message",
         })
       );
@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
     } else if (basePath === "messages" && pathParam) {
       const dbRespond = await dbClient.send(
         query({
-          TableName: process.env.CHAT_HISTORY_TABLE,
+          TableName: process.env.CHAT_HISTORY_TABLE || "mock-table",
           IndexName: "message-id",
           ExpressionAttributeValues: {
             ":msg_id": { S: pathParam },
@@ -39,7 +39,7 @@ exports.handler = async (event, context) => {
         })
       );
       console.log("DB response: ", dbRespond);
-      if(dbRespond?.Items.length < 1) {
+      if (dbRespond?.Items.length < 1) {
         response.statusCode = 404;
         response.body = JSON.stringify("ID_NOT_FOUND");
       } else {
@@ -50,7 +50,7 @@ exports.handler = async (event, context) => {
       //Prepare statement and call DB request
       const dbRespond = await dbClient.send(
         getAllRecord({
-          TableName: process.env.CHAT_HISTORY_TABLE,
+          TableName: process.env.CHAT_HISTORY_TABLE || "mock-table",
           ConsistentRead: true,
         })
       );
@@ -62,7 +62,7 @@ exports.handler = async (event, context) => {
     } else {
       //Path not found
       response.statusCode = 404;
-      response.body = "NOT_FOUND";
+      response.body = JSON.stringify("PATH_NOT_EXIST");
     }
 
     console.log("Send response", response);
