@@ -226,7 +226,7 @@ Resources:
   webhookServer:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: webhook-handler
+      FunctionName: webhook-handler-prod
       CodeUri: webhook-handler
       Events:
         ApiEvent:
@@ -261,7 +261,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: get-message-handler
-      CodeUri: get-message-handler
+      CodeUri: get-message-handler-prod
       Events:
         ApiEvent:
           Type: Api
