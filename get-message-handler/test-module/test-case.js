@@ -1,7 +1,7 @@
 const { mockClient } = require("aws-sdk-client-mock")
 const { DynamoDBClient, ScanCommand, QueryCommand } = require("@aws-sdk/client-dynamodb");
-const lambdaEvent = require("./test-module/lambda-event-mock.json")
-const apiHandler = require("./index")
+const lambdaEvent = require("./lambda-event-mock.json")
+const apiHandler = require("../index")
 const dbMock = mockClient(DynamoDBClient)
 
 describe("API Handler Test", () => {
