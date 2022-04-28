@@ -290,7 +290,7 @@ Resources:
         Type: String
       SSESpecification: 
         SSEEnabled: false
-      TableName: users-master
+      TableName: users-master-prod
 
   chatHistoryDatabase:
     Type: AWS::DynamoDB::Table
@@ -316,7 +316,7 @@ Resources:
       SSESpecification: 
         SSEEnabled: false
       TableClass: STANDARD 
-      TableName: chat-history
+      TableName: chat-history-prod
       Tags: 
         - Key: environment
           Value: development
