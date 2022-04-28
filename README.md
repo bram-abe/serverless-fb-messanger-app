@@ -60,9 +60,11 @@ The IaS (Infrastructure as Code) `.yml` file has been provided to help you deplo
 Choose one from the two options below.
 
 #### CI/CD deployment with AWS Code pipeline and automated testing
-1. RUN `sam deploy -t codepipeline.yaml --stack-name <stack-name> --capabilities=CAPABILITY_IAM --region <AWS-REGIONS> --parameter-overrides MainGitBranch=master`
-    - The provided template assume your main git branch is named `master` or you can specify something else according to your git branch.
-2. After creating the stack, the CodeStar Connection is in PENDING status by default. You must complete the OAuth handshake with the third-party provider using the installation associated with your connection via AWS console
+1. RUN `sam pipeline bootstrap` will bootstraping all the required AWS resources to connecting CI/CD system
+2. RUN `sam deploy -t codepipeline.yaml --capabilities=CAPABILITY_IAM --stack-name <STACK-NAME>  --region <AWS-REGIONS> --parameter-overrides MainGitBranch=master ProdStackName=<STACK-NAME>`
+    - Provided template assume your main git branch is named `master` or you can specify something else according to your git branch name.
+3. After creating the stack, the CodeStar Connection is in PENDING status by default. You must complete the OAuth handshake with the third-party provider using the installation associated with your connection via AWS console
+4. RUN `aws cloudformation describe-stacks --stack-name <STACK-NAME> --region <AWS-REGIONS>` to get endpoint URL on stack `Outputs`
 
 #### Manual deployment with AWS SAM
 1. Change `WEBHOOK_VERIFY_TOKEN` env placeholder of your choice on serverless.yml
