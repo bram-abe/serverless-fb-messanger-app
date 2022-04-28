@@ -35,10 +35,10 @@ Parameters:
     Default: "bram-abe/serverless-fb-messanger-app"
   MainGitBranch:
     Type: String
-    Default: "main"
+    Default: "master"
   SamTemplate:
     Type: String
-    Default: "template-dev.yml"
+    Default: "template.yml"
   TestingRegion:
     Type: String
     Default: "ap-southeast-1"
