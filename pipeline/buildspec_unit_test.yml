@@ -6,8 +6,6 @@ phases:
   build:
     commands:
       # trigger the unit tests here
-      - echo 'Install dependencies'
-      - cd get-message-handler && npm i
-      - echo 'Running unit tests'
-      - npm run test
-      
+      - echo 'Install Dependencies & Run Test Case'
+      - cd get-message-handler && npm i && npm run test
+
