@@ -1,9 +1,0 @@
-version: 0.2
-phases:
-  install:
-    runtime-versions:
-      nodejs: latest
-  build:
-    commands:
-      # trigger the integration tests here
-      - echo 'Running integration tests'
